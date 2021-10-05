@@ -1,7 +1,7 @@
 -- replicated convars have to be created on both client and server
-CreateConVar("ttt_tester_health_above_100", 200, {FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_REPLICATED})
-CreateConVar("ttt_tester_health_beneath_100", 125, {FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_REPLICATED})
-CreateConVar("ttt_tester_send_popup", 1, {FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_REPLICATED})
+CreateConVar("ttt_tester_health_above_100", 200, {FCVAR_ARCHIVE, FCVAR_NOTIFY})
+CreateConVar("ttt_tester_health_beneath_100", 125, {FCVAR_ARCHIVE, FCVAR_NOTIFY})
+CreateConVar("ttt_tester_send_popup", 1, {FCVAR_ARCHIVE, FCVAR_NOTIFY})
 
 hook.Add("TTTUlxDynamicRCVars", "ttt2_ulx_dynamic_tester_convars", function(tbl)
     tbl[ROLE_TESTER] = tbl[ROLE_TESTER] or {}

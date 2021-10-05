@@ -37,9 +37,7 @@ end
 if SERVER then
 	
 	hook.Add("PlayerDeath", "ttt2_heal_up_tester", function( victim, inflictor, attacker)
-		if victim:GetSubRole() == ROLE_TESTER then return end
-		if SpecDM and (victim.IsGhost() and victim:IsGhost()) then return end
-		if victim:GetTeam() ~= TEAM_TRAITOR then return end
+		if victim:GetSubRole() == ROLE_TESTER and victim:GetTeam() ~= TEAM_TRAITOR then return end
 
 		-- cache ConVar values
 		local hp_above = GetConVar("ttt_tester_health_above_100"):GetInt()
@@ -51,7 +49,7 @@ if SERVER then
 		for i = 1, #plys do
 			local ply = plys[i]
 
-			if ply:GetSubRole() == ROLE_TESTER and ply:Alive() then
+			if ply:GetSubRole() == ROLE_TESTER and ply:Alive() and ply:IsActive() then
 
 				-- is the player's health beneath 100, he gains an amount of hp
 				if ply:Health() < ply:GetMaxHealth() then
